@@ -1,0 +1,19 @@
+.aside {
+  width: $aside-width;
+  background: $darken;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+
+  ul {
+
+    li {
+
+      a {
+        color: $gray-500;
+        padding: .5rem;
+        display: block;
+      }
+    }
+  }
+}

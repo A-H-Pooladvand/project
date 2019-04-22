@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  text-align: justify;
+}
+
+html[direction="rtl"] body {
+  direction: rtl;
+}
+
+html[direction="ltr"] body {
+  direction: ltr;
+}
+
+p {
+  cursor: default;
+}
