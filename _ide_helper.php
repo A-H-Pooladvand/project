@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.11 on 2019-04-21 08:21:31.
+ * Generated for Laravel 5.8.13 on 2019-04-22 08:54:09.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1796,7 +1796,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently authenticated user.
          *
-         * @return \Modules\User\Entities\User|null
+         * @return \Modules\User\Entities\User|null 
          * @static 
          */ 
         public static function user()
@@ -1834,7 +1834,8 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
+         *
+         * @return \Modules\User\Entities\User|false
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1902,8 +1903,9 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application.
          *
          * @param mixed $id
-         * @param bool $remember
-         * @return \App\User|false 
+         * @param bool  $remember
+         *
+         * @return \Modules\User\Entities\User|false
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -1970,7 +1972,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \Modules\User\Entities\User 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -2081,7 +2083,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \Modules\User\Entities\User|null 
          * @static 
          */ 
         public static function getUser()
@@ -2131,7 +2133,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if current user is authenticated. If not, throw an exception.
          *
-         * @return \App\User 
+         * @return \Modules\User\Entities\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -11453,8 +11455,9 @@ namespace Illuminate\Support\Facades {
     }
 
     /**
-     * 
      *
+     *
+     * @method static void registerCustomDBALType(string $class, string $name, string $type)
      * @see \Illuminate\Database\Schema\Builder
      */ 
     class Schema {
@@ -11664,6 +11667,24 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Database\Schema\Builder            
                         /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
                         return $instance->disableForeignKeyConstraints();
+        }
+
+        /**
+         * Register a custom Doctrine mapping type.
+         *
+         * @param string $class
+         * @param string $name
+         * @param string $type
+         *
+         * @return void
+         * @throws \Doctrine\DBAL\DBALException
+         * @static
+         */
+        public static function registerCustomDoctrineType($class, $name, $type)
+        {
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            $instance->registerCustomDoctrineType($class, $name, $type);
         }
         
         /**
@@ -14478,15 +14499,1687 @@ namespace Illuminate\Support {
     /**
      * 
      *
-     */ 
-    class Str {
-         
+     */
+    class Str
+    {
     }
- 
 }
 
+namespace Artesaos\SEOTools\Facades {
 
-namespace  { 
+    /**
+     *
+     *
+     */
+    class SEOMeta
+    {
+        /**
+         * Generates meta tags.
+         *
+         * @param bool $minify
+         *
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->generate($minify);
+        }
+
+        /**
+         * Sets the title.
+         *
+         * @param string $title
+         * @param bool   $appendDefault
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setTitle($title, $appendDefault = true)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setTitle($title, $appendDefault);
+        }
+
+        /**
+         * Sets the default title tag.
+         *
+         * @param string $default
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setTitleDefault($default)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setTitleDefault($default);
+        }
+
+        /**
+         * Sets the separator for the title tag.
+         *
+         * @param string $separator
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setTitleSeparator($separator)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setTitleSeparator($separator);
+        }
+
+        /**
+         *
+         *
+         * @param string $description
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setDescription($description)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setDescription($description);
+        }
+
+        /**
+         * Sets the list of keywords, you can send an array or string separated with commas
+         * also clears the previously set keywords.
+         *
+         * @param string|array $keywords
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setKeywords($keywords)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setKeywords($keywords);
+        }
+
+        /**
+         * Add a keyword.
+         *
+         * @param string|array $keyword
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addKeyword($keyword)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->addKeyword($keyword);
+        }
+
+        /**
+         * Remove a metatag.
+         *
+         * @param string $key
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function removeMeta($key)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->removeMeta($key);
+        }
+
+        /**
+         * Add a custom meta tag.
+         *
+         * @param string|array $meta
+         * @param string       $value
+         * @param string       $name
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addMeta($meta, $value = null, $name = 'name')
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->addMeta($meta, $value, $name);
+        }
+
+        /**
+         * Sets the canonical URL.
+         *
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setCanonical($url)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setCanonical($url);
+        }
+
+        /**
+         * Sets the AMP html URL.
+         *
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setAmpHtml($url)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setAmpHtml($url);
+        }
+
+        /**
+         * Sets the prev URL.
+         *
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setPrev($url)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setPrev($url);
+        }
+
+        /**
+         * Sets the next URL.
+         *
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setNext($url)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setNext($url);
+        }
+
+        /**
+         * Add an alternate language.
+         *
+         * @param string $lang language code in ISO 639-1 format
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addAlternateLanguage($lang, $url)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->addAlternateLanguage($lang, $url);
+        }
+
+        /**
+         * Add alternate languages.
+         *
+         * @param array $languages
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function addAlternateLanguages($languages)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->addAlternateLanguages($languages);
+        }
+
+        /**
+         * Sets the meta robots.
+         *
+         * @param string $robots
+         *
+         * @return \Artesaos\SEOTools\MetaTagsContract
+         * @static
+         */
+        public static function setRobots($robots)
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->setRobots($robots);
+        }
+
+        /**
+         * Takes the title formatted for display.
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitle()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getTitle();
+        }
+
+        /**
+         * Takes the default title.
+         *
+         * @return string
+         * @static
+         */
+        public static function getDefaultTitle()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getDefaultTitle();
+        }
+
+        /**
+         * takes the title that was set.
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitleSession()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getTitleSession();
+        }
+
+        /**
+         * takes the title that was set.
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitleSeparator()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getTitleSeparator();
+        }
+
+        /**
+         * Get the Meta keywords.
+         *
+         * @return array
+         * @static
+         */
+        public static function getKeywords()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getKeywords();
+        }
+
+        /**
+         * Get all metatags.
+         *
+         * @return array
+         * @static
+         */
+        public static function getMetatags()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getMetatags();
+        }
+
+        /**
+         * Get the Meta description.
+         *
+         * @return string|null
+         * @static
+         */
+        public static function getDescription()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getDescription();
+        }
+
+        /**
+         * Get the canonical URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getCanonical()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getCanonical();
+        }
+
+        /**
+         * Get the AMP html URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getAmpHtml()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getAmpHtml();
+        }
+
+        /**
+         * Get the prev URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getPrev()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getPrev();
+        }
+
+        /**
+         * Get the next URL.
+         *
+         * @return string
+         * @static
+         */
+        public static function getNext()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getNext();
+        }
+
+        /**
+         * Get alternate languages.
+         *
+         * @return array
+         * @static
+         */
+        public static function getAlternateLanguages()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getAlternateLanguages();
+        }
+
+        /**
+         * Get meta robots.
+         *
+         * @return string
+         * @static
+         */
+        public static function getRobots()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            return $instance->getRobots();
+        }
+
+        /**
+         * Reset all data.
+         *
+         * @return void
+         * @static
+         */
+        public static function reset()
+        {
+            /** @var \Artesaos\SEOTools\SEOMeta $instance */
+            $instance->reset();
+        }
+    }
+
+    /**
+     *
+     *
+     */
+    class OpenGraph
+    {
+        /**
+         * Generates open graph tags.
+         *
+         * @param bool $minify
+         *
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->generate($minify);
+        }
+
+        /**
+         * Add or update property.
+         *
+         * @param string       $key key of property
+         * @param string|array $value value of property
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addProperty($key, $value)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->addProperty($key, $value);
+        }
+
+        /**
+         * Set article properties.
+         *
+         * @param array $attributes opengraph article attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setArticle($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setArticle($attributes);
+        }
+
+        /**
+         * Set profile properties.
+         *
+         * @param array $attributes opengraph profile attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setProfile($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setProfile($attributes);
+        }
+
+        /**
+         * Set book properties.
+         *
+         * @param array $attributes opengraph book attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setBook($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setBook($attributes);
+        }
+
+        /**
+         * Set music song properties.
+         *
+         * @param array $attributes opengraph music.song attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicSong($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setMusicSong($attributes);
+        }
+
+        /**
+         * Set music album properties.
+         *
+         * @param array $attributes opengraph music.album attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicAlbum($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setMusicAlbum($attributes);
+        }
+
+        /**
+         * Set music playlist properties.
+         *
+         * @param array $attributes opengraph music.playlist attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicPlaylist($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setMusicPlaylist($attributes);
+        }
+
+        /**
+         * Set music radio station properties.
+         *
+         * @param array $attributes opengraph music.radio_station attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setMusicRadioStation($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setMusicRadioStation($attributes);
+        }
+
+        /**
+         * Set video movie properties.
+         *
+         * @param array $attributes opengraph video.movie attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoMovie($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setVideoMovie($attributes);
+        }
+
+        /**
+         * Set video episode properties.
+         *
+         * @param array $attributes opengraph video.episode attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoEpisode($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setVideoEpisode($attributes);
+        }
+
+        /**
+         * Set video episode properties.
+         *
+         * @param array $attributes opengraph video.other attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoOther($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setVideoOther($attributes);
+        }
+
+        /**
+         * Set video episode properties.
+         *
+         * @param array $attributes opengraph video.tv_show attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setVideoTVShow($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setVideoTVShow($attributes);
+        }
+
+        /**
+         * Add video properties.
+         *
+         * @param string $source url of video source
+         * @param array  $attributes opengraph video attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addVideo($source = null, $attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->addVideo($source, $attributes);
+        }
+
+        /**
+         * Add audio properties.
+         *
+         * @param string $source url for audio source
+         * @param array  $attributes opengraph audio attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addAudio($source = null, $attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->addAudio($source, $attributes);
+        }
+
+        /**
+         * Set place properties.
+         *
+         * @param array $attributes opengraph place attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setPlace($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setPlace($attributes);
+        }
+
+        /**
+         * Set product properties.
+         *
+         * @param array $attributes opengraph product attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setProduct($attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setProduct($attributes);
+        }
+
+        /**
+         * Remove property.
+         *
+         * @param string $key key
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function removeProperty($key)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->removeProperty($key);
+        }
+
+        /**
+         * Add image to properties.
+         *
+         * @param mixed $source URL of image source
+         * @param array $attributes Object type attributes
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addImage($source = null, $attributes = [])
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->addImage($source, $attributes);
+        }
+
+        /**
+         * Add images to properties.
+         *
+         * @param array $urls array of image urls
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function addImages($urls)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->addImages($urls);
+        }
+
+        /**
+         * Define type property.
+         *
+         * @param string $type set the opengraph type
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setType($type = null)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setType($type);
+        }
+
+        /**
+         * Define title property.
+         *
+         * @param string $title set the opengraph title
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setTitle($title = null)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setTitle($title);
+        }
+
+        /**
+         * Define description property.
+         *
+         * @param string $description set the opengraph description
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setDescription($description = null)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setDescription($description);
+        }
+
+        /**
+         * Define url property.
+         *
+         * @param string $url set the opengraph url
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setUrl($url)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setUrl($url);
+        }
+
+        /**
+         * Define site_name property.
+         *
+         * @param string $name set the site_name
+         *
+         * @return \Artesaos\SEOTools\OpenGraphContract
+         * @static
+         */
+        public static function setSiteName($name)
+        {
+            /** @var \Artesaos\SEOTools\OpenGraph $instance */
+            return $instance->setSiteName($name);
+        }
+    }
+
+    /**
+     *
+     *
+     */
+    class TwitterCard
+    {
+        /**
+         *
+         *
+         * @param bool $minify
+         *
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->generate($minify);
+        }
+
+        /**
+         *
+         *
+         * @param string       $key
+         * @param string|array $value
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function addValue($key, $value)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->addValue($key, $value);
+        }
+
+        /**
+         *
+         *
+         * @param string $title
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setTitle($title)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setTitle($title);
+        }
+
+        /**
+         *
+         *
+         * @param string $type
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setType($type)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setType($type);
+        }
+
+        /**
+         *
+         *
+         * @param string $site
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setSite($site)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setSite($site);
+        }
+
+        /**
+         *
+         *
+         * @param string $description
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setDescription($description)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setDescription($description);
+        }
+
+        /**
+         *
+         *
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setUrl($url)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setUrl($url);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $image
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @deprecated use setImage($image) instead
+         * @static
+         */
+        public static function addImage($image)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->addImage($image);
+        }
+
+        /**
+         *
+         *
+         * @param string|array $images
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @deprecated use setImage($image) instead
+         * @static
+         */
+        public static function setImages($images)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setImages($images);
+        }
+
+        /**
+         *
+         *
+         * @param $image
+         *
+         * @return \Artesaos\SEOTools\TwitterCardsContract
+         * @static
+         */
+        public static function setImage($image)
+        {
+            /** @var \Artesaos\SEOTools\TwitterCards $instance */
+            return $instance->setImage($image);
+        }
+    }
+
+    /**
+     *
+     *
+     */
+    class SEOTools
+    {
+        /**
+         *
+         *
+         * @return \Artesaos\SEOTools\Contracts\MetaTags
+         * @static
+         */
+        public static function metatags()
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->metatags();
+        }
+
+        /**
+         *
+         *
+         * @return \Artesaos\SEOTools\Contracts\OpenGraph
+         * @static
+         */
+        public static function opengraph()
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->opengraph();
+        }
+
+        /**
+         *
+         *
+         * @return \Artesaos\SEOTools\Contracts\TwitterCards
+         * @static
+         */
+        public static function twitter()
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->twitter();
+        }
+
+        /**
+         * Setup title for all seo providers.
+         *
+         * @param string $title
+         * @param bool   $appendDefault
+         *
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function setTitle($title, $appendDefault = true)
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->setTitle($title, $appendDefault);
+        }
+
+        /**
+         * Setup description for all seo providers.
+         *
+         * @param $description
+         *
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function setDescription($description)
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->setDescription($description);
+        }
+
+        /**
+         * Sets the canonical URL.
+         *
+         * @param string $url
+         *
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function setCanonical($url)
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->setCanonical($url);
+        }
+
+        /**
+         *
+         *
+         * @param array|string $urls
+         *
+         * @return \Artesaos\SEOTools\Contracts\SEOTools
+         * @static
+         */
+        public static function addImages($urls)
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->addImages($urls);
+        }
+
+        /**
+         * Get current title from metatags.
+         *
+         * @param bool $session
+         *
+         * @return string
+         * @static
+         */
+        public static function getTitle($session = false)
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->getTitle($session);
+        }
+
+        /**
+         * Generate from all seo providers.
+         *
+         * @param bool $minify
+         *
+         * @return string
+         * @static
+         */
+        public static function generate($minify = false)
+        {
+            /** @var \Artesaos\SEOTools\SEOTools $instance */
+            return $instance->generate($minify);
+        }
+    }
+}
+
+namespace Nwidart\Modules\Facades {
+
+    /**
+     *
+     *
+     */
+    class Module
+    {
+        /**
+         * Add other module location.
+         *
+         * @param string $path
+         *
+         * @return \Nwidart\Modules\Laravel\LaravelFileRepository
+         * @static
+         */
+        public static function addLocation($path)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->addLocation($path);
+        }
+
+        /**
+         * Get all additional paths.
+         *
+         * @return array
+         * @static
+         */
+        public static function getPaths()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getPaths();
+        }
+
+        /**
+         * Get scanned modules paths.
+         *
+         * @return array
+         * @static
+         */
+        public static function getScanPaths()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getScanPaths();
+        }
+
+        /**
+         * Get & scan all modules.
+         *
+         * @return array
+         * @static
+         */
+        public static function scan()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->scan();
+        }
+
+        /**
+         * Get all modules.
+         *
+         * @return array
+         * @static
+         */
+        public static function all()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->all();
+        }
+
+        /**
+         * Get cached modules.
+         *
+         * @return array
+         * @static
+         */
+        public static function getCached()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getCached();
+        }
+
+        /**
+         * Get all modules as collection instance.
+         *
+         * @return \Nwidart\Modules\Collection
+         * @static
+         */
+        public static function toCollection()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->toCollection();
+        }
+
+        /**
+         * Get modules by status.
+         *
+         * @param $status
+         *
+         * @return array
+         * @static
+         */
+        public static function getByStatus($status)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getByStatus($status);
+        }
+
+        /**
+         * Determine whether the given module exist.
+         *
+         * @param $name
+         *
+         * @return bool
+         * @static
+         */
+        public static function has($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->has($name);
+        }
+
+        /**
+         * Get list of enabled modules.
+         *
+         * @return array
+         * @static
+         */
+        public static function allEnabled()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->allEnabled();
+        }
+
+        /**
+         * Get list of disabled modules.
+         *
+         * @return array
+         * @static
+         */
+        public static function allDisabled()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->allDisabled();
+        }
+
+        /**
+         * Get count from all modules.
+         *
+         * @return int
+         * @static
+         */
+        public static function count()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->count();
+        }
+
+        /**
+         * Get all ordered modules.
+         *
+         * @param string $direction
+         *
+         * @return array
+         * @static
+         */
+        public static function getOrdered($direction = 'asc')
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getOrdered($direction);
+        }
+
+        /**
+         * Get a module path.
+         *
+         * @return string
+         * @static
+         */
+        public static function getPath()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getPath();
+        }
+
+        /**
+         * Register the modules.
+         *
+         * @static
+         */
+        public static function register()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->register();
+        }
+
+        /**
+         * Boot the modules.
+         *
+         * @static
+         */
+        public static function boot()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->boot();
+        }
+
+        /**
+         * Find a specific module.
+         *
+         * @param $name
+         *
+         * @return mixed|void
+         * @static
+         */
+        public static function find($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->find($name);
+        }
+
+        /**
+         * Find a specific module by its alias.
+         *
+         * @param $alias
+         *
+         * @return mixed|void
+         * @static
+         */
+        public static function findByAlias($alias)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->findByAlias($alias);
+        }
+
+        /**
+         * Find all modules that are required by a module. If the module cannot be found, throw an exception.
+         *
+         * @param $name
+         *
+         * @return array
+         * @throws ModuleNotFoundException
+         * @static
+         */
+        public static function findRequirements($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->findRequirements($name);
+        }
+
+        /**
+         * Find a specific module, if there return that, otherwise throw exception.
+         *
+         * @param $name
+         *
+         * @return \Module
+         * @throws ModuleNotFoundException
+         * @static
+         */
+        public static function findOrFail($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->findOrFail($name);
+        }
+
+        /**
+         * Get all modules as laravel collection instance.
+         *
+         * @param $status
+         *
+         * @return \Nwidart\Modules\Collection
+         * @static
+         */
+        public static function collections($status = 1)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->collections($status);
+        }
+
+        /**
+         * Get module path for a specific module.
+         *
+         * @param $module
+         *
+         * @return string
+         * @static
+         */
+        public static function getModulePath($module)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getModulePath($module);
+        }
+
+        /**
+         * Get asset path for a specific module.
+         *
+         * @param $module
+         *
+         * @return string
+         * @static
+         */
+        public static function assetPath($module)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->assetPath($module);
+        }
+
+        /**
+         * Get a specific config data from a configuration file.
+         *
+         * @param      $key
+         * @param null $default
+         *
+         * @return mixed
+         * @static
+         */
+        public static function config($key, $default = null)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->config($key, $default);
+        }
+
+        /**
+         * Get storage path for module used.
+         *
+         * @return string
+         * @static
+         */
+        public static function getUsedStoragePath()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getUsedStoragePath();
+        }
+
+        /**
+         * Set module used for cli session.
+         *
+         * @param $name
+         *
+         * @throws ModuleNotFoundException
+         * @static
+         */
+        public static function setUsed($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->setUsed($name);
+        }
+
+        /**
+         * Forget the module used for cli session.
+         *
+         * @static
+         */
+        public static function forgetUsed()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->forgetUsed();
+        }
+
+        /**
+         * Get module used for cli session.
+         *
+         * @return string
+         * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+         * @static
+         */
+        public static function getUsedNow()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getUsedNow();
+        }
+
+        /**
+         * Get laravel filesystem instance.
+         *
+         * @return \Illuminate\Filesystem\Filesystem
+         * @static
+         */
+        public static function getFiles()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getFiles();
+        }
+
+        /**
+         * Get module assets path.
+         *
+         * @return string
+         * @static
+         */
+        public static function getAssetsPath()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getAssetsPath();
+        }
+
+        /**
+         * Get asset url from a specific module.
+         *
+         * @param string $asset
+         *
+         * @return string
+         * @throws InvalidAssetPath
+         * @static
+         */
+        public static function asset($asset)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->asset($asset);
+        }
+
+        /**
+         * Determine whether the given module is activated.
+         *
+         * @param string $name
+         *
+         * @return bool
+         * @throws ModuleNotFoundException
+         * @static
+         */
+        public static function enabled($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->enabled($name);
+        }
+
+        /**
+         * Determine whether the given module is not activated.
+         *
+         * @param string $name
+         *
+         * @return bool
+         * @throws ModuleNotFoundException
+         * @static
+         */
+        public static function disabled($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->disabled($name);
+        }
+
+        /**
+         * Enabling a specific module.
+         *
+         * @param string $name
+         *
+         * @return void
+         * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+         * @static
+         */
+        public static function enable($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            $instance->enable($name);
+        }
+
+        /**
+         * Disabling a specific module.
+         *
+         * @param string $name
+         *
+         * @return void
+         * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+         * @static
+         */
+        public static function disable($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            $instance->disable($name);
+        }
+
+        /**
+         * Delete a specific module.
+         *
+         * @param string $name
+         *
+         * @return bool
+         * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+         * @static
+         */
+        public static function delete($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->delete($name);
+        }
+
+        /**
+         * Update dependencies for the specified module.
+         *
+         * @param string $module
+         *
+         * @static
+         */
+        public static function update($module)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->update($module);
+        }
+
+        /**
+         * Install the specified module.
+         *
+         * @param string $name
+         * @param string $version
+         * @param string $type
+         * @param bool   $subtree
+         *
+         * @return \Symfony\Component\Process\Process
+         * @static
+         */
+        public static function install($name, $version = 'dev-master', $type = 'composer', $subtree = false)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->install($name, $version, $type, $subtree);
+        }
+
+        /**
+         * Get stub path.
+         *
+         * @return string|null
+         * @static
+         */
+        public static function getStubPath()
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->getStubPath();
+        }
+
+        /**
+         * Set stub path.
+         *
+         * @param string $stubPath
+         *
+         * @return \Nwidart\Modules\Laravel\LaravelFileRepository
+         * @static
+         */
+        public static function setStubPath($stubPath)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            /** @var \Nwidart\Modules\Laravel\LaravelFileRepository $instance */
+            return $instance->setStubPath($stubPath);
+        }
+
+        /**
+         * Register a custom macro.
+         *
+         * @param string          $name
+         * @param object|callable $macro
+         *
+         * @return void
+         * @static
+         */
+        public static function macro($name, $macro)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            \Nwidart\Modules\Laravel\LaravelFileRepository::macro($name, $macro);
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool   $replace
+         *
+         * @return void
+         * @throws \ReflectionException
+         * @static
+         */
+        public static function mixin($mixin, $replace = true)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            \Nwidart\Modules\Laravel\LaravelFileRepository::mixin($mixin, $replace);
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         *
+         * @return bool
+         * @static
+         */
+        public static function hasMacro($name)
+        {
+            //Method inherited from \Nwidart\Modules\FileRepository            
+            return \Nwidart\Modules\Laravel\LaravelFileRepository::hasMacro($name);
+        }
+    }
+}
+
+namespace {
 
     class App extends \Illuminate\Support\Facades\App {}
 
@@ -17086,15 +18779,25 @@ namespace  {
 
     class Mail extends \Illuminate\Support\Facades\Mail {}
 
-    class Notification extends \Illuminate\Support\Facades\Notification {}
+    class Notification extends \Illuminate\Support\Facades\Notification
+    {
+    }
 
-    class Password extends \Illuminate\Support\Facades\Password {}
+    class Password extends \Illuminate\Support\Facades\Password
+    {
+    }
 
-    class Queue extends \Illuminate\Support\Facades\Queue {}
+    class Queue extends \Illuminate\Support\Facades\Queue
+    {
+    }
 
-    class Redirect extends \Illuminate\Support\Facades\Redirect {}
+    class Redirect extends \Illuminate\Support\Facades\Redirect
+    {
+    }
 
-    class Request extends \Illuminate\Support\Facades\Request {}
+    class Request extends \Illuminate\Support\Facades\Request
+    {
+    }
 
     class Response extends \Illuminate\Support\Facades\Response {}
 
@@ -17113,6 +18816,16 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class SEOMeta extends \Artesaos\SEOTools\Facades\SEOMeta {}
+
+    class OpenGraph extends \Artesaos\SEOTools\Facades\OpenGraph {}
+
+    class Twitter extends \Artesaos\SEOTools\Facades\TwitterCard {}
+
+    class SEO extends \Artesaos\SEOTools\Facades\SEOTools {}
+
+    class Module extends \Nwidart\Modules\Facades\Module {}
  
 }
 

@@ -12588,19 +12588,33 @@ process.umask = function() { return 0; };
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+    'use strict'
+    __webpack_require__.r(__webpack_exports__)
+    /* harmony import */
+    var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ './resources/js/bootstrap.js')
+
+    /***/
+  }),
+
+  /***/ './resources/js/bootstrap.js':
+  /*!***********************************!*\
+    !*** ./resources/js/bootstrap.js ***!
+    \***********************************/
+  /*! no exports provided */
+  /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+    "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 
+    /**
+     * Set jquery as global
+     */
 
-/**
- * Set jquery as global
- */
-
-window.$ = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
+    window.$ = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -12617,13 +12631,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
-if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    if (token) {
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-/***/ }),
+    /***/ }),
 
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
