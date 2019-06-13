@@ -11,5 +11,7 @@
     @yield('content')
 </div>
 
+@include('admin::_partials.scripts')
+@stack('scripts')
 </body>
 </html>

@@ -12593,6 +12593,12 @@ process.umask = function() { return 0; };
     /* harmony import */
     var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ './resources/js/bootstrap.js')
 
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+
     /***/
   }),
 
@@ -12603,7 +12609,7 @@ process.umask = function() { return 0; };
   /*! no exports provided */
   /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-    "use strict";
+    'use strict'
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -12614,7 +12620,7 @@ __webpack_require__.r(__webpack_exports__);
      * Set jquery as global
      */
 
-    window.$ = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
+    window.$ = jquery__WEBPACK_IMPORTED_MODULE_1___default.a
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -12632,12 +12638,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
     if (token) {
-      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+      window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
 } else {
-      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+      console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token')
+    }
 
-    /***/ }),
+    /***/
+  }),
 
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
@@ -12650,15 +12657,28 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 /***/ }),
 
+  /***/ './resources/sass/modules/admin/_init.scss':
+  /*!*************************************************!*\
+    !*** ./resources/sass/modules/admin/_init.scss ***!
+    \*************************************************/
+  /*! no static exports found */
+  /***/ (function (module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+    /***/
+  }),
+
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+  /*!*******************************************************************************************************!*\
+    !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/modules/admin/_init.scss ***!
+    \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/amirhossein/Desktop/project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/amirhossein/Desktop/project/resources/sass/app.scss */"./resources/sass/app.scss");
+    __webpack_require__(/*! /home/amirhossein/Desktop/mine/project/resources/js/app.js */'./resources/js/app.js')
+    __webpack_require__(/*! /home/amirhossein/Desktop/mine/project/resources/sass/app.scss */'./resources/sass/app.scss')
+    module.exports = __webpack_require__(/*! /home/amirhossein/Desktop/mine/project/resources/sass/modules/admin/_init.scss */'./resources/sass/modules/admin/_init.scss')
 
 
 /***/ })

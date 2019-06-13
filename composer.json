@@ -10,6 +10,7 @@
   "require": {
     "php": "^7.3",
     "ext-dom": "*",
+    "ahp/thumbnail": "dev-master",
     "artesaos/seotools": "^0.14.0",
     "fideloper/proxy": "^4.0",
     "laravel/framework": "5.8.*",
